@@ -20,18 +20,17 @@ smelt_weight = [6.7, 7.5, 7.0, 9.7, 9.8,
                 8.7, 10.0, 9.9, 9.8, 12.2,
                 13.4, 12.2, 19.7, 19.9]
 
-fish_length = bream_length + smelt_length
-fish_weight = bream_weight + smelt_weight
+length = bream_length + smelt_length
+weight = bream_weight + smelt_weight
 
 import numpy as np
-
-fish_data = np.column_stack((fish_length, fish_weight))
-fish_target = np.concatenate((np.ones(35), np.zeros(14)))
+fish_data = np.column_stack((length, weight))
+fish_target = np.concatenate((np.ones(len(bream_length)), np.zeros(len(smelt_length))))
 
 from sklearn.model_selection import train_test_split
 
 train_input, test_input, train_target, test_target = train_test_split(
-    fish_data, fish_target, stratify=fish_target, random_state=42
+    fish_data, fish_target, stratify=fish_target
 )
 
 mean = np.mean(train_input, axis=0)
@@ -39,13 +38,14 @@ std = np.std(train_input, axis=0)
 
 train_scaled = (train_input - mean) / std
 test_scaled = (test_input - mean) / std
-new = ([25, 150] - mean) / std
 
 from sklearn.neighbors import KNeighborsClassifier
 
 kn = KNeighborsClassifier()
 kn.fit(train_scaled, train_target)
 print(kn.score(test_scaled, test_target))
+
+new = ([25, 150] - mean) / std
 
 print(kn.predict([new]))
 
