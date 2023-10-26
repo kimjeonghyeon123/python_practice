@@ -13,11 +13,6 @@ Unit 02. 거주지
 - 질문
 I'd like to know about the place where you live. Do you live in an apartment or a house? What does it look like? How many rooms does it have? Describe it in as much detail as possible.
 
-1) 현재 아파트 산다
-2) 방 많다
-3) 거실 제일 좋다
-4) 거실에서 쉬는 상상한다.
-
 - 대답
 I currently live in an apartment complex with my family.
 It's on the 14th floor.
